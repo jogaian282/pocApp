@@ -1,0 +1,44 @@
+<!-- Below Navigation Menu -->
+<ng-sidebar-container [ngStyle]="{'height': '100vh'}">
+    <!-- Page content -->
+    <div ng-sidebar-content>
+      <app-header></app-header>
+      <div id="content">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>
+   <!-- A sidebar -->
+   <ng-sidebar [(opened)]="_opened" mode="push" #sidebar>
+     <div class="sidebar">
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a href="javascript:void(0)" class="simple-text">
+            <div class="text-center">
+              <img src="assets/img/logo.png" alt="logo" class="img-thumbnail img-responsive" width="57" height="57">
+            </div>
+          </a>
+        </div>
+        <ul class="nav responsive-nav">
+          <li routerLinkActive="active">
+            <a [routerLink]="['/request']">
+              Requests
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/response']">
+              Reports
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/dashboard']">
+              Dashboard
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   </ng-sidebar>
+ 
+ </ng-sidebar-container>
+ <!-- End Navigation Menu -->

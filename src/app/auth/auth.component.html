@@ -1,0 +1,151 @@
+<!-- HTML Render View of Auth Module will come here-->
+<div class="container">
+    <div class="row padding-t-b-20">
+        <div class="col-md-6 col-md-offset-3">
+            <header>
+                <h2 class="text-primary">
+                    LOGIN / SIGN UP
+                </h2>
+            </header>
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                                <form id="login-form" #loginForm="ngForm" role="form" [class.displayTab]="isActiveLoginTab" [class.closeTab]="!isActiveLoginTab">
+                                    <div class="form-group">
+                                        <input type="text" #loginFocus #username="ngModel" tabindex="1" required name="username" id="username" tabindex="1" class="form-control" placeholder="Username" [(ngModel)]="user.userName">
+                                        <div [hidden]="!((username.dirty || formOnSubmit) && username.invalid)">
+                                            <div *ngIf="username.errors && username.errors.required">
+                                                <span class="help-text">
+                                                    User name is required
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" #loginpassword="ngModel" tabindex="2" required name="password" id="password" class="form-control" placeholder="Password" [(ngModel)]="user.password">
+                                        <div [hidden]="!((loginpassword.dirty || formOnSubmit) && loginpassword.invalid)">
+                                            <div *ngIf="loginpassword.errors && loginpassword.errors.required">
+                                                <span class="help-text">
+                                                    Password is required
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <button type="button" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" (click)="validateUser()">Login</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form id="register-form" role="form" #registerForm="ngForm" [class.displayTab]="isActiveRegistrationTab" [class.closeTab]="!isActiveRegistrationTab">
+                                    <div class="form-group">
+                                        <input name="firstName" tabindex="1" #focus #firstName="ngModel" required [(ngModel)]="register.firstName" class='form-control'
+                                        type="text" placeholder="First Name" minlength="2" maxlength="50">
+                                        <div [hidden]="!((firstName.dirty || formOnSubmit) && firstName.invalid)">
+                                            <div *ngIf="firstName.errors && firstName.errors.required">
+                                                <span class="help-text">
+                                                    First name is required
+                                                </span>
+                                            </div>
+                                            <div *ngIf="firstName.errors && firstName.errors.minlength">
+                                                <span class="help-text">
+                                                    Minimum 2 characters required
+                                                </span>
+                                            </div>
+                                            <div *ngIf="firstName.errors && firstName.errors.maxlength">
+                                                <span class="help-text">
+                                                Maximum 50 characters allowed
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="lastName" tabindex="2" [(ngModel)]="register.lastName" class='form-control'
+                                        type="text" placeholder="Last Name" minlength="2" maxlength="50">
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="userName" #userName="ngModel" required [(ngModel)]="register.userName" class='form-control'
+                                        type="text" placeholder="User Name" minlength="2" maxlength="50">
+                                        <div [hidden]="!((userName.dirty || formOnSubmit) && userName.invalid)">
+                                            <div *ngIf="userName.errors && userName.errors.required">
+                                                <span class="help-text">
+                                                    User name is required
+                                                </span>
+                                            </div>
+                                            <div *ngIf="userName.errors && userName.errors.minlength">
+                                                <span class="help-text">
+                                                    Minimum 2 characters required
+                                                </span>
+                                            </div>
+                                            <div *ngIf="userName.errors && userName.errors.maxlength">
+                                                <span class="help-text">
+                                                    Maximum 50 characters allowed
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="password" tabindex="1" #password="ngModel" required [(ngModel)]="register.password" class='form-control'
+                                        type="password" placeholder="Password" minlength="2" maxlength="20">
+                                        <div [hidden]="!((password.dirty || formOnSubmit) && password.invalid)">
+                                            <div *ngIf="password.errors && password.errors.required">
+                                                <span class="help-text">
+                                                    Password is required
+                                                </span>
+                                            </div>
+                                            <div *ngIf="password.errors && password.errors.minlength">
+                                                <span class="help-text">
+                                                    Minimum 2 characters required
+                                                </span>
+                                            </div>
+                                            <div *ngIf="password.errors && password.errors.maxlength">
+                                                <span class="help-text">
+                                                    Maximum 50 characters allowed
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="mobileNo" tabindex="2" [(ngModel)]="register.mobileNumber" class='form-control'
+                                        type="text" placeholder="Mobile Number">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <button type="button" tabindex="1" id="register-submit" tabindex="4" class="form-control btn btn-register" (click)="registration()">Register Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6 tabs">
+                            <a class="active" #login id="login-form-link" role="button" (click)="auth($event)"><div class="login" [class.currentTab]="isActiveLoginTab" [class.notCurrentTab]="!isActiveLoginTab">LOGIN</div></a>
+                        </div>
+                        <div class="col-xs-6 tabs">
+                            <a id="register-form-link" #register role="button" (click)="auth($event)"><div class="register" [class.currentTab]="isActiveRegistrationTab" [class.notCurrentTab]="!isActiveRegistrationTab">REGISTER</div></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" *ngIf="errMsg" >
+            <h3 class="margin-5 text-warning text-center">
+                {{errMsg}}
+            </h3>
+        </div>
+    </div>
+</div>
+

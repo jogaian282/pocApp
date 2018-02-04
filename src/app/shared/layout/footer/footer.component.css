@@ -1,0 +1,21 @@
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    background-color: #2D3B55;
+    opacity: 0.8;
+    text-align: center;
+}
+
+.footClass ul li a{
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.footClass ul li a:hover {
+    background-color: #2D3B55;
+    opacity: 0.8;
+}

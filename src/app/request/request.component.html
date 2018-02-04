@@ -1,0 +1,121 @@
+<!-- Begin Request component html -->
+
+<form class="form-horizontal" novalidate role="form" #customerForm="ngForm">
+  <div class="text-center">
+    <h3 class="text-primary">
+      FORM CONTROL TYPES
+    </h3>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">
+      Customer Name *
+    </label>
+    <div class="col-md-6">
+      <input type="text" class="form-control" name="customerName" [(ngModel)]="customer.customerName">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">
+      Mobile No.
+    </label>
+    <div class="col-md-6">
+      <input type="text" class="form-control" name="mobileNumber" [(ngModel)]="customer.mobileNumber">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">
+      Email Id
+    </label>
+    <div class="col-md-6">
+      <input type="email" class="form-control" name="emailId" [(ngModel)]="customer.emailId">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">
+      Gender
+    </label>
+    <div class="col-md-6">
+      <div class="radio">
+        <label><input type="radio" name="gender" value="MALE" [(ngModel)]="customer.gender">Male</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="gender" value="FEMALE" [(ngModel)]="customer.gender">Female</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">
+      Choose Country
+    </label>
+    <div class="col-md-6">
+      <select class="form-control" [(ngModel)]="customer.country" name="country">
+        <option value="INDIA">India</option>
+        <option value="US">US</option>
+        <option value="AUSTRALIA">Australia</option>
+        <option value="CHINA">China</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">
+      Message
+    </label>
+    <div class="col-md-6">
+      <textarea class="form-control" rows="5" name="message" [(ngModel)]="customer.message"></textarea>
+    </div>
+  </div>
+  <div class="form-group text-center">
+    <button type="button" class="btn btn-primary" (click)="saveDetails()">
+      Save
+    </button>
+    <button type="reset" class="btn btn-warning">
+      Reset
+    </button>
+    <button type="button" [disabled]="isViewModal" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+      View
+    </button>
+  </div>
+</form>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Customer Details</h4>
+        </div>
+        <div class="modal-body">
+          <table class="table table-bordered" *ngIf="customer" >
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Mobile No.</th>
+                  <th>Email-Id</th>
+                  <th>Gender</th>
+                  <th>Country</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>{{customer.customerName}}</td>
+                    <td>{{customer.mobileNumber}}</td>
+                    <td>{{customer.emailId}}</td>
+                    <td>{{customer.gender}}</td>
+                    <td>{{customer.country}}</td>
+                    <td>{{customer.message}}</td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+
+<!-- End Request component html -->
